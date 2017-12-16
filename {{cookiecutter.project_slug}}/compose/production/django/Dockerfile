@@ -20,6 +20,7 @@ RUN sed -i 's/\r//' /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 RUN chown django /entrypoint.sh
 
+{% if cookiecutter.use_celery == 'y' %}
 COPY ./compose/production/django/celery/worker/start.sh /start-celeryworker.sh
 RUN sed -i 's/\r//' /start-celeryworker.sh
 RUN chmod +x /start-celeryworker.sh
@@ -27,6 +28,7 @@ RUN chmod +x /start-celeryworker.sh
 COPY ./compose/production/django/celery/beat/start.sh /start-celerybeat.sh
 RUN sed -i 's/\r//' /start-celerybeat.sh
 RUN chmod +x /start-celerybeat.sh
+{% endif %}
 
 COPY . /app
 

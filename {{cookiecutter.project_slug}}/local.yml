@@ -15,6 +15,7 @@ services:
     volumes:
       - .:/app
     environment:
+      - DJANGO_READ_DOT_ENV_FILE=True
       - POSTGRES_USER={{cookiecutter.project_slug}}
       - USE_DOCKER=yes
     ports:

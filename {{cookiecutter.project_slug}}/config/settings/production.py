@@ -20,6 +20,8 @@ import logging
 
 from .base import *  # noqa
 
+DEBUG = env.bool('DJANGO_DEBUG', False)  # Debug False by default in production
+
 # SECRET CONFIGURATION
 # ------------------------------------------------------------------------------
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
@@ -161,14 +163,6 @@ ANYMAIL = {
 }
 EMAIL_BACKEND = 'anymail.backends.mailgun.EmailBackend'
 
-# TEMPLATE CONFIGURATION
-# ------------------------------------------------------------------------------
-# See:
-# https://docs.djangoproject.com/en/dev/ref/templates/api/#django.template.loaders.cached.Loader
-TEMPLATES[0]['OPTIONS']['loaders'] = [
-    ('django.template.loaders.cached.Loader', [
-        'django.template.loaders.filesystem.Loader', 'django.template.loaders.app_directories.Loader', ]),
-]
 {% set _DEFAULT_CONN_MAX_AGE=60 %}
 # DATABASE CONFIGURATION
 # ------------------------------------------------------------------------------

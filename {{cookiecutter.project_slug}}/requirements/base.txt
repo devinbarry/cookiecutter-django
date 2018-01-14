@@ -4,9 +4,8 @@
 # Verified bug on Python 3.5.1
 wheel==0.30.0
 
-
 # Bleeding edge Django
-django==2.0
+Django==2.0.1
 
 # Configuration
 django-environ==0.4.4
